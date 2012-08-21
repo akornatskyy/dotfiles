@@ -14,8 +14,8 @@ deb http://security.debian.org/ testing/updates main contrib non-free
 #deb-src http://security.debian.org/ testing/updates main contrib non-free
 EOF
 
-        apt-get -q update
-        apt-get -yq dist-upgrade
+        apt-get update
+        apt-get -y dist-upgrade
 	    apt-get -y install make less build-essential python mercurial \
             python-virtualenv vim-nox
 
