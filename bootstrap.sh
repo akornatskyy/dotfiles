@@ -24,12 +24,12 @@ EOF
         # http://mindref.blogspot.com/2012/08/freebsd-makeconf.html
         # http://mindref.blogspot.com/2012/08/freebsd-csup-update.html
 
-        make -DBATCH install clean -sC /usr/ports/ports-mgmt/portmaster
-        make -DEXTRA_ENCODINGS -DBATCH install clean -sC /usr/ports/converters/libiconv
-        make -DWITHOUT_EXAMPLES -DBATCH install clean -sC /usr/ports/lang/python27
-        make install clean -sC /usr/ports/devel/mercurial
-        make install clean -sC /usr/ports/devel/py-virtualenv
-        make -DWITH_PYTHON -DWITHOUT_X11 -DEXUBERANT_CTAGS install clean -sC /usr/ports/editors/vim
+        make -DBATCH install clean -C /usr/ports/ports-mgmt/portmaster
+        make -DEXTRA_ENCODINGS -DBATCH install clean -C /usr/ports/converters/libiconv
+        make -DWITHOUT_EXAMPLES -DBATCH install clean -C /usr/ports/lang/python27
+        make install clean -C /usr/ports/devel/mercurial
+        make install clean -C /usr/ports/devel/py-virtualenv
+        make -DWITH_PYTHON -DWITHOUT_X11 -DEXUBERANT_CTAGS install clean -C /usr/ports/editors/vim
 
     fi
 fi
