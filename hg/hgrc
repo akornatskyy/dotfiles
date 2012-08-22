@@ -1,0 +1,14 @@
+[hostfingerprints]
+bitbucket.org = 24:9c:45:8b:9c:aa:ba:55:4e:01:6d:58:ff:e4:28:7d:2a:14:ae:3b
+
+[ui]
+username = Andriy Kornatskyy <andriy.kornatskyy@live.com>
+ignore = ~/.hgignore
+
+[auth]
+bitbucket.org.prefix = bitbucket.org
+bitbucket.org.username = akorn
+
+[extensions]
+color =
+graphlog =
