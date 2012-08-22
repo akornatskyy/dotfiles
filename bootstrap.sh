@@ -37,10 +37,12 @@ EOF
     fi
 fi
 
+rm -f ~/.hgrc
 cat <<EOF > ~/.hgrc
 [hostfingerprints]
 bitbucket.org = 24:9c:45:8b:9c:aa:ba:55:4e:01:6d:58:ff:e4:28:7d:2a:14:ae:3b
 EOF
 
-hg clone https://bitbucket.org/akorn/dotfiles dotfiles
+rm -rf dotfiles
+hg clone -q https://bitbucket.org/akorn/dotfiles dotfiles
 make install -sC dotfiles
