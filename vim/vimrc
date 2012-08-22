@@ -1,0 +1,229 @@
+"
+" http://vimdoc.sourceforge.net/htmldoc/options.html
+"
+
+
+" Make Vim behave in a more useful way
+set nocompatible
+call pathogen#infect()
+
+
+" File Type
+" =========
+
+" Detect the type of file
+filetype on
+" Load filetype plugins
+filetype plugin on
+" Load indent files for specific filetypes
+filetype indent on
+
+
+" Encoding
+" ========
+
+" Encoding used for the terminal
+set termencoding=utf-8
+" The character encoding used inside Vim
+set encoding=utf-8
+" A list of character encodings considered when starting to edit
+" an existing file
+set fileencodings=utf-8,cp1251
+" Prefer unix over windows over mac formats
+set fileformats=unix,dos,mac
+
+
+" Backups
+" =======
+
+" Switch off automatic creation of backup files
+set nobackup
+" Do not make a backup before overwriting a file
+set nowritebackup
+" Do not use a swapfile for the buffer.
+set noswapfile
+
+
+" Behavior
+" ========
+
+" Automatically save before commands like :next and :make
+set autowrite
+" Hide buffers when they are abandoned
+set hidden
+" Enable mouse usage (all modes)
+set mouse=a
+" make backspace work normal (indent, eol, start)
+set backspace=2
+" shortens messages to avoid 'press a key' prompt
+set shortmess=atI
+" don't bell or blink
+set noerrorbells
+set vb t_vb=
+
+
+" Look
+" ====
+
+" The title of the window
+set title
+" Show the line and column number of the cursor position
+set ruler
+" Show (partial) command in status line.
+set showcmd
+" Maximum width of text that is being inserted. A longer line will be
+" broken after white space to get this width.
+set textwidth=65
+" Turn on line numbers
+set number
+" Show matching brackets
+set showmatch
+" how many tenths of a second to blink matching
+set matchtime=2
+" Improves smoothness of redrawing
+set ttyfast
+" Do not redraw while running macros
+set nolazyredraw
+" Minimal number of screen lines to keep above
+" and below the cursor.
+set scrolloff=0
+" Lines will not wrap and only part of long lines will be displayed
+set nowrap
+
+
+" Colors
+" ======
+
+" Enable syntax highlighting
+syntax on
+" number of colors
+set t_Co=256
+" Load color scheme: https://github.com/veloce/vim-aldmeris
+let g:aldmeris_termcolors = "tango"
+let g:aldmeris_transparent = 1
+colorscheme aldmeris
+
+
+" Tabs
+" ====
+
+" How automatic formatting is to be done
+set formatoptions=qrn1
+" Convert tabs to spaces
+set expandtab
+" Tabs = 4 spaces
+set smarttab
+set tabstop=4
+" Indent/outdent 4 spaces
+set shiftwidth=4
+" Take indent for new line from previous line
+set autoindent
+" Smart autoindenting
+set smarttab
+" Number of spaces that a <Tab> counts for while performing editing
+" operations
+set softtabstop=4
+" Number of spaces that a <Tab> in the file counts for
+set tabstop=4
+
+
+" Search
+" ======
+
+" Do case insensitive matching
+set ignorecase
+" Do smart case matching
+set smartcase
+" Incremental search
+set incsearch
+" Highlight search
+set hlsearch
+" All matches in a line are substituted instead of one
+set gdefault
+
+
+" Keys Mapping
+" ============
+
+" Sets leader to ',' and localleader to "\"
+let mapleader=","
+let maplocalleader="\\"
+
+" Yank to the end of line
+nnoremap Y y$
+
+" Use Ctrl+S to save file is edit and command modes
+" http://mindref.blogspot.com/2010/10/recovering-from-ctrl-s-in-putty.html
+inoremap <c-s> <c-o>:w<cr>
+nnoremap <c-s> :w<cr>
+
+" Clear highlighted search result
+nnoremap <leader><space> :nohlsearch<cr>
+
+" Visual shifting
+vnoremap < <gv
+vnoremap > >gv
+
+" Turning off auto indent when pasting text into vim
+set pastetoggle=<F8>
+
+
+" Folding
+" =======
+
+" zM - fold everything
+" zR - unfold everything
+" za - toggle the current fold
+" zA - recursively toggle the current fold
+" zo - open
+" zc - close
+" zf - selection
+set foldmethod=manual
+set nofoldenable
+
+
+" Completion
+" ==========
+
+" Invoke completion CTRL-P/CTRL-N
+set wildmenu
+" A file that matches with one of these patterns is ignored when 
+" completing file or directory names
+set wildignore=*.o,*.pyc,*.jpg,*.jpeg,*.png,*.gif
+" When more than one match, list all matches and complete first match
+set wildmode=list:full
+
+
+" Miscellaneous
+" =============
+
+" No drawing underlines in HTML
+let html_no_rendering=1
+
+if has("autocmd")
+    " Useful to align text
+    autocmd FileType python,javascript,c setlocal colorcolumn=79
+    
+    " syntax highlight syncing from start
+    autocmd BufEnter * :syntax sync fromstart
+
+    " Remove any trailing whitespace that is in the file
+    autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
+
+    " Jump to the last position when reopening a file
+    autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$")
+        \ | exe "normal! g'\"" | endif       
+endif
+
+
+" NERDTree
+" ========
+" https://github.com/scrooloose/nerdtree
+
+" Shorter commands to toggle NERDTree display
+nnoremap <leader>t :NERDTreeToggle<CR>
+" This option is used to specify which files the NERD tree
+" should ignore.  It must be a list of regular expressions.
+let NERDTreeIgnore=['\.pyc$', '\.egg-info$', '\.pyo$', '\.gz$', '\.zip$',
+    \ '^__pycache__$', '\.o$', '\.mo$', '^build$', '^dist$', '^env$']
+
