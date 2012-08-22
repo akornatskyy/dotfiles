@@ -1,7 +1,7 @@
 
 DOTDIR=`pwd`
 
-install: install-vim
+install: install-hg install-vim
 
 install-csh:
 	rm -f ~/.cshrc
@@ -10,6 +10,11 @@ install-csh:
 install-sh:
 	rm -f ~/.shrc
 	ln -s $(DOTDIR)/sh/shrc ~/.shrc
+
+install-hg:
+	rm -f ~/.hgrc ~/.hgignore
+	ln -s $(DOTDIR)/hg/hgrc ~/.hgrc
+	ln -s $(DOTDIR)/hg/hgignore ~/.hgignore
 
 install-vim:
 	rm -rf ~/.vim ~/.vimrc
