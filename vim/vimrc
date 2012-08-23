@@ -187,7 +187,7 @@ set nofoldenable
 
 " Invoke completion CTRL-P/CTRL-N
 set wildmenu
-" A file that matches with one of these patterns is ignored when 
+" A file that matches with one of these patterns is ignored when
 " completing file or directory names
 set wildignore=*.o,*.pyc,*.jpg,*.jpeg,*.png,*.gif
 " When more than one match, list all matches and complete first match
@@ -199,11 +199,17 @@ set wildmode=list:full
 
 " No drawing underlines in HTML
 let html_no_rendering=1
+" Restore terminal screen when exiting Vim
+" http://mindref.blogspot.com/2012/08/vim-restore-screen.html
+if &term =~ "xterm"
+    let &t_ti = "\<Esc>[?47h"
+    let &t_te = "\<Esc>[?47l"
+endif
 
 if has("autocmd")
     " Useful to align text
     autocmd FileType python,javascript,c setlocal colorcolumn=79
-    
+
     " syntax highlight syncing from start
     autocmd BufEnter * :syntax sync fromstart
 
@@ -212,7 +218,7 @@ if has("autocmd")
 
     " Jump to the last position when reopening a file
     autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$")
-        \ | exe "normal! g'\"" | endif       
+        \ | exe "normal! g'\"" | endif
 endif
 
 
