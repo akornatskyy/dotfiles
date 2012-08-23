@@ -1,15 +1,11 @@
 
-A collection of dot files.
+Bootstap
+--------
 
-Bootstrap
----------
-
-Here is how you can bootstrap:
-
-* Debian::
+Debian::
 
     wget -qO - https://bitbucket.org/akorn/dotfiles/raw/tip/bootstrap.sh --no-check-certificate | sh
 
-* FreeBSD::
+FreeBSD::
 
     fetch -qo - https://bitbucket.org/akorn/dotfiles/raw/tip/bootstrap.sh | sh
