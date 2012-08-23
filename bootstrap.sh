@@ -32,7 +32,10 @@ EOF
         make install clean -C /usr/ports/devel/py-virtualenv
         make -DWITH_PYTHON -DWITHOUT_X11 -DEXUBERANT_CTAGS install clean -C /usr/ports/editors/vim
         unset BATCH
-        rehash
+
+	# Causes the internal hash table of the contents of the directories 
+	# in the path variable to be recomputed.
+        csh -c rehash
 
     fi
 fi
