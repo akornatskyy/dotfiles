@@ -25,17 +25,13 @@ EOF
         # http://mindref.blogspot.com/2012/08/freebsd-csup-update.html
 
         export BATCH=
-        make -DBATCH install clean -C /usr/ports/ports-mgmt/portmaster
-        make -DEXTRA_ENCODINGS install clean -C /usr/ports/converters/libiconv
-        make -DWITHOUT_EXAMPLES install clean -C /usr/ports/lang/python27
-        make install clean -C /usr/ports/devel/mercurial
-        make install clean -C /usr/ports/devel/py-virtualenv
-        make -DWITH_PYTHON -DWITHOUT_X11 -DEXUBERANT_CTAGS install clean -C /usr/ports/editors/vim
+        [ -z "`pkg_info | grep portmaster`" ] && make -DBATCH install clean -C /usr/ports/ports-mgmt/portmaster
+        [ -z "`pkg_info | grep libiconv`" ] && make -DEXTRA_ENCODINGS install clean -C /usr/ports/converters/libiconv
+        [ -z "`pkg_info | grep python27`" ] && make -DWITHOUT_EXAMPLES install clean -C /usr/ports/lang/python27
+        [ -z "`pkg_info | grep mercurial`" ] && make install clean -C /usr/ports/devel/mercurial
+        [ -z "`pkg_info | grep virtualenv`" ] && make install clean -C /usr/ports/devel/py-virtualenv
+        [ -z "`pkg_info | grep vim`" ] && make -DWITH_PYTHON -DWITHOUT_X11 -DEXUBERANT_CTAGS install clean -C /usr/ports/editors/vim
         unset BATCH
-
-	# Causes the internal hash table of the contents of the directories 
-	# in the path variable to be recomputed.
-        csh -c rehash
 
     fi
 fi
