@@ -16,8 +16,8 @@ EOF
 
         apt-get update
         apt-get -y dist-upgrade
-	    apt-get -y install make less build-essential python mercurial \
-            python-virtualenv vim-nox
+	    apt-get -y install make less build-essential python python-dev \
+            mercurial python-virtualenv vim-nox
 
     elif [ $platform = 'FreeBSD' ]; then
 
