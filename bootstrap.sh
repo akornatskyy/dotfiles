@@ -29,7 +29,7 @@ EOF
         [ -z "`pkg_info | grep libiconv`" ] && make -DEXTRA_ENCODINGS install clean -C /usr/ports/converters/libiconv
         [ -z "`pkg_info | grep python27`" ] && make -DWITHOUT_EXAMPLES install clean -C /usr/ports/lang/python27
         [ -z "`pkg_info | grep mercurial`" ] && make install clean -C /usr/ports/devel/mercurial
-        [ -z "`pkg_info | grep virtualenv`" ] && make install clean -C /usr/ports/devel/py-virtualenv
+        [ -z "`pkg_info | grep virtualenv`" ] && make -DWITHOUT_DOCS install clean -C /usr/ports/devel/py-virtualenv
         [ -z "`pkg_info | grep vim`" ] && make -DWITH_PYTHON -DWITHOUT_X11 -DEXUBERANT_CTAGS install clean -C /usr/ports/editors/vim
         unset BATCH
 
