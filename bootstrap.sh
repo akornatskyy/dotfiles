@@ -25,12 +25,12 @@ EOF
         # http://mindref.blogspot.com/2012/08/freebsd-csup-update.html
 
         export BATCH=
-        [ -z "`pkg_info | grep portmaster`" ] && make -DBATCH install clean -C /usr/ports/ports-mgmt/portmaster
-        [ -z "`pkg_info | grep libiconv`" ] && make -DEXTRA_ENCODINGS install clean -C /usr/ports/converters/libiconv
-        [ -z "`pkg_info | grep python27`" ] && make -DWITHOUT_EXAMPLES install clean -C /usr/ports/lang/python27
-        [ -z "`pkg_info | grep mercurial`" ] && make install clean -C /usr/ports/devel/mercurial
-        [ -z "`pkg_info | grep virtualenv`" ] && make -DWITHOUT_DOCS install clean -C /usr/ports/devel/py-virtualenv
-        [ -z "`pkg_info | grep vim`" ] && make -DWITH_PYTHON -DWITHOUT_X11 -DEXUBERANT_CTAGS install clean -C /usr/ports/editors/vim
+        [ -z "`pkg_info | grep portmaster`" ] && make -DBATCH install clean -sC /usr/ports/ports-mgmt/portmaster
+        [ -z "`pkg_info | grep libiconv`" ] && make -DEXTRA_ENCODINGS install clean -sC /usr/ports/converters/libiconv
+        [ -z "`pkg_info | grep python27`" ] && make -DWITHOUT_EXAMPLES install clean -sC /usr/ports/lang/python27
+        [ -z "`pkg_info | grep mercurial`" ] && make install clean -sC /usr/ports/devel/mercurial
+        [ -z "`pkg_info | grep virtualenv`" ] && make -DWITHOUT_DOCS install clean -sC /usr/ports/devel/py-virtualenv
+        [ -z "`pkg_info | grep vim`" ] && make -DWITH_PYTHON -DWITHOUT_X11 -DEXUBERANT_CTAGS install clean -sC /usr/ports/editors/vim
         unset BATCH
 
     fi
